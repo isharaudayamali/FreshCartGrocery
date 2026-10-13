@@ -1,0 +1,153 @@
+import { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import "./CustomerDetailView.scss";
+import {
+  deleteCustomerData,
+  getCustomerDetail,
+} from "../../services/customer-service";
+import type { CustomerDetailsModel } from "../../models/customer-details-model";
+import { BsTrash3 } from "react-icons/bs";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime";
+
+function CustomerDetailView() {
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const [customer, setCustomer] = useState<CustomerDetailsModel>();
+  const [error, setError] = useState("");
+  const customerId = id ? Number(id) : NaN;
+  const invalidIdMessage = !id
+    ? "Customer ID is missing."
+    : !Number.isInteger(customerId);
+
+  useEffect(() => {
+    if (invalidIdMessage) {
+      return;
+    }
+
+    dayjs.extend(relativeTime);
+
+    getCustomerDetail(customerId)
+      .then(setCustomer)
+      .catch((requestError: unknown) => {
+        setError(
+          requestError instanceof Error
+            ? requestError.message
+            : "Failed to load customer details.",
+        );
+      });
+  }, [id, customerId, invalidIdMessage]);
+
+  async function deleteCustomer() {
+    try {
+      await deleteCustomerData(Number(id));
+      navigate("/customers");
+    } catch (error) {
+      console.log(error);
+      alert("Failed to delete customer. Please try again.");
+    }
+  }
+
+  async function updateCustomer(id: number) {
+    try {
+      navigate(`/customers/${id}/edit`);
+    } catch (error) {
+      console.log(error);
+      alert("Please try again.");
+    }
+  }
+
+  return (
+    <div className="customer-detail-view container">
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2>Customer Details</h2>
+
+        <p className="text-muted mb-0">
+          {customer && (
+            <>
+              Created:{" "}
+              {dayjs(customer.created_at).format("YYYY MMMM DD, hh:mm A")} (
+              {dayjs(customer.created_at).fromNow()}) <br></br>
+              Updated:{" "}
+              {dayjs(customer.updated_at).format("YYYY MMMM DD, hh:mm A")} (
+              {dayjs(customer.updated_at).fromNow()})
+            </>
+          )}
+        </p>
+      </div>
+
+      {(invalidIdMessage || error) && (
+        <div className="alert alert-danger">{invalidIdMessage || error}</div>
+      )}
+      {!customer && !invalidIdMessage && !error && (
+        <p>Loading customer details...</p>
+      )}
+
+      {customer && (
+        <div className="table-responsive">
+          <table className="table table-bordered table-striped">
+            <tbody>
+              <tr>
+                <th scope="row">ID</th>
+                <td>{customer.id}</td>
+              </tr>
+              <tr>
+                <th scope="row">Name</th>
+                <td>{customer.name}</td>
+              </tr>
+              <tr>
+                <th scope="row">Mobile</th>
+                <td>{customer.mobile}</td>
+              </tr>
+              <tr>
+                <th scope="row">NIC</th>
+                <td>{customer.nic || "-"}</td>
+              </tr>
+              <tr>
+                <th scope="row">Date of Birth</th>
+                <td>
+                  {dayjs(customer.dob).format("YYYY MMMM DD")} (
+                  {dayjs().diff(dayjs(customer.dob), "year")} years old)
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Gender</th>
+                <td>{customer.gender || "male"}</td>
+              </tr>
+              <tr>
+                <th scope="row">City</th>
+                <td>{customer.city || "-"}</td>
+              </tr>
+              <tr>
+                <th scope="row">Address</th>
+                <td>{customer.address || "-"}</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div className="d-flex justify-content-between mt-3">
+            <Link to="/customers" className="btn btn-outline-secondary">
+              Back to Customers
+            </Link>
+            <div className="d-flex gap-2 align-items-end">
+              <button
+                className="btn btn-primary me-2"
+                onClick={() => updateCustomer(Number(id))}
+              >
+                Edit
+              </button>
+              <button
+                className="btn btn-danger d-inline-flex gap-1 align-items-center"
+                onClick={deleteCustomer}
+              >
+                <BsTrash3></BsTrash3>Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default CustomerDetailView;
