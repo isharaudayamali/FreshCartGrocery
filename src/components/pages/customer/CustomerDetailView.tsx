@@ -58,22 +58,25 @@ function CustomerDetailView() {
   }
 
   return (
-    <div className="customer-detail-view container">
-      <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2>Customer Details</h2>
-
-        <p className="text-muted mb-0">
-          {customer && (
-            <>
-              Created:{" "}
+ <div className="customer-detail-view container my-4 d-block">
+      {/* 1. Page Header with Title and Timestamp */}
+      <div className="w-100 border-bottom mb-3 pb-3 mb-4">
+        <h2 className="fw-bold text-primary mb-1">Customer Details</h2>
+        {customer && (
+          <p className="text-muted small mb-0">
+            <span>
+              <strong>Created:</strong>{" "}
               {dayjs(customer.created_at).format("YYYY MMMM DD, hh:mm A")} (
-              {dayjs(customer.created_at).fromNow()}) <br></br>
-              Updated:{" "}
+              {dayjs(customer.created_at).fromNow()})
+            </span>
+            <span className="mx-2">•</span>
+            <span>
+              <strong>Updated:</strong>{" "}
               {dayjs(customer.updated_at).format("YYYY MMMM DD, hh:mm A")} (
               {dayjs(customer.updated_at).fromNow()})
-            </>
-          )}
-        </p>
+            </span>
+          </p>
+        )}
       </div>
 
       {(invalidIdMessage || error) && (
