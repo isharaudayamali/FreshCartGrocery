@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./LoginForm.scss";
-import type { UserLoginModel } from "../../models/auth-models";
-import { login, setToken } from "../../services/auth-service";
+import type { UserLoginModel } from "../../../models/auth-models";
+import { login, setToken } from "../../../services/auth-service";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
+import logo from "../../../assets/images/logo.png";
 import { BsEnvelopeOpenFill, BsEyeFill, BsEyeSlash, BsLockFill } from "react-icons/bs";
 
 function LoginForm() {

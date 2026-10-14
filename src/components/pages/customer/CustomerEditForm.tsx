@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./CustomerEditForm.scss";
-import type CustomerInsertModel from "../../models/customer-insert-model";
-import { getCustomerDetail, updateCustomer } from "../../services/customer-service";
-import type { CustomerDetailsModel } from "../../models/customer-details-model";
+import type CustomerInsertModel from "../../../models/customer-insert-model";
+import { getCustomerDetail, updateCustomer } from "../../../services/customer-service";
+import type { CustomerDetailsModel } from "../../../models/customer-details-model";
 
 function CustomerEditForm() {
   const { id } = useParams<{ id: string }>();

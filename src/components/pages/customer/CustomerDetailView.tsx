@@ -4,8 +4,8 @@ import "./CustomerDetailView.scss";
 import {
   deleteCustomerData,
   getCustomerDetail,
-} from "../../services/customer-service";
-import type { CustomerDetailsModel } from "../../models/customer-details-model";
+} from "../../../services/customer-service";
+import type { CustomerDetailsModel } from "../../../models/customer-details-model";
 import { BsTrash3 } from "react-icons/bs";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";

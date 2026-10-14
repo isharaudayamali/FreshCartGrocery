@@ -4,9 +4,9 @@ import { useNavigate } from "react-router-dom";
 import {
   deleteCustomerData,
   getCustomersData,
-} from "../../services/customer-service";
-import type CustomerDataModel from "../../models/customer-data-model";
-import { getPreviewPageNumbers, type Page } from "../../models/common-models";
+} from "../../../services/customer-service";
+import type CustomerDataModel from "../../../models/customer-data-model";
+import { getPreviewPageNumbers, type Page } from "../../../models/common-models";
 import {
   MdKeyboardArrowLeft,
   MdKeyboardArrowRight,

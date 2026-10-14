@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./CustomerForm.scss";
-import type CustomerInsertModel from "../../models/customer-insert-model";
-import { insertCustomer } from "../../services/customer-service";
+import type CustomerInsertModel from "../../../models/customer-insert-model";
+import { insertCustomer } from "../../../services/customer-service";
 
 function CustomerForm() {
   const [name, setName] = useState("");
