@@ -1,0 +1,11 @@
+@import "../../../scss/variables";
+
+$header-background-color: #f8f9fa;
+$header-text-color: #343a40;
+
+.main-window-header {
+    background-color: $header-background-color;
+    color: $header-text-color;
+    height: 80px;
+    box-shadow: 0px px 4px rgba(0, 0, 0, 0.1);
+    }
