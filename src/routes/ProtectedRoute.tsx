@@ -1,6 +1,6 @@
-import { Navigate, Outlet } from "react-router-dom";
 import { getToken } from "../services/auth-service";
-import MainWindowHeader from "../components/widgets/header/MainWindow-Header";
+import MainWindow from "../components/widgets/main-window/MainWindow";
+import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = () => {
     const token = getToken();
@@ -10,14 +10,9 @@ const ProtectedRoute = () => {
     }
 
     return (
-        <div>
-            <MainWindowHeader />
-            <main>
-                <Outlet />
-            </main>
-            <footer>footer</footer>
-        </div>
-    );
+        <MainWindow />
+    )
+    
 };
 
 export default ProtectedRoute;
