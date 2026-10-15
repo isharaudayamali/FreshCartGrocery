@@ -1,0 +1,20 @@
+@use "./../../../scss/variables.scss" as *;
+
+.main-window-sidebar { 
+    position: fixed;
+    background-color: $primary-green;
+    width : 100%;
+    top: 80px;
+    bottom: 40px;
+    z-index: 11;
+    overflow-y: auto;
+    
+    transform: translateX(-100%);
+    visibility: hidden; 
+    transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+    &.open {
+        transform: translateX(0);
+        visibility: visible;
+    }
+}
