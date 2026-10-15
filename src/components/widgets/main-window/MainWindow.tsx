@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import "./MainWindow.scss";
 import MainWindowHeader from "../header/MainWindow-Header";
+import MainWindowFooter from "../footer/MainWindowFooter";
 
 const MainWindow = () => {
   return (
@@ -9,7 +10,7 @@ const MainWindow = () => {
         <main>
             <Outlet />
         </main>
-        <footer>Footer</footer>
+        <MainWindowFooter />
     </div>
   );
 };
