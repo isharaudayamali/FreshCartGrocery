@@ -58,7 +58,7 @@ function CustomerDetailView() {
   }
 
   return (
- <div className="customer-detail-view container my-4 d-block">
+ <div className="customer-detail-view my-4 d-block">
       {/* 1. Page Header with Title and Timestamp */}
       <div className="w-100 border-bottom mb-3 pb-3 mb-4">
         <h2 className="fw-bold text-primary mb-1">Customer Details</h2>

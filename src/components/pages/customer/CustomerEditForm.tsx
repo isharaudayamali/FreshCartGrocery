@@ -87,7 +87,7 @@ function CustomerEditForm() {
   }
 
   return (
-    <div className="customer-form container">
+    <div className="customer-form">
       <h1>Edit Customer of {customer?.name}</h1>
 
         <form onSubmit={submitForm}>

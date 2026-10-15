@@ -45,7 +45,7 @@ function CustomerForm() {
   }
 
   return (
-    <div className="customer-form container">
+    <div className="customer-form">
       <h1>Customer Form</h1>
       <form onSubmit={submitForm}>
         <div className="row">
