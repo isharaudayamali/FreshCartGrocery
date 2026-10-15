@@ -64,11 +64,12 @@ function CustomerDetailView() {
         <h2 className="fw-bold text-primary mb-1">Customer Details</h2>
         {customer && (
           <p className="text-muted small mb-0">
+            <span className="mx-2">•</span>
             <span>
               <strong>Created:</strong>{" "}
               {dayjs(customer.created_at).format("YYYY MMMM DD, hh:mm A")} (
               {dayjs(customer.created_at).fromNow()})
-            </span>
+            </span> <br></br>
             <span className="mx-2">•</span>
             <span>
               <strong>Updated:</strong>{" "}
