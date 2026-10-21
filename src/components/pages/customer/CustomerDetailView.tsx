@@ -110,8 +110,8 @@ function CustomerDetailView() {
               <tr>
                 <th scope="row">Date of Birth</th>
                 <td>
-                  {dayjs(customer.dob).format("YYYY MMMM DD")} (
-                  {dayjs().diff(dayjs(customer.dob), "year")} years old)
+                  {dayjs(customer.dateOfBirth).format("YYYY MMMM DD")} (
+                  {dayjs().diff(dayjs(customer.dateOfBirth), "year")} years old)
                 </td>
               </tr>
               <tr>
