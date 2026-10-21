@@ -8,20 +8,16 @@ import type CustomerInsertModel from "../models/customer-insert-model";
     const insertEndpoint = endpoint; ;
 
 export async function insertCustomer(customer: CustomerInsertModel): Promise<CustomerDataModel> {
-
-        const response = await axiosClient.post(insertEndpoint, {
-            data: customer,
+        const response = await axiosClient.post<CustomerDataModel>(insertEndpoint, customer, {
             headers: {
                 'Content-Type': 'application/json'
             }
         });
 
-        const resData = await response.data;
-
-        if (response.status === 201) {
-            return resData as CustomerDataModel;
+        if (response.status >= 200 && response.status < 300) {
+            return response.data;
         } else {
-            throw new Error(resData.message || `Backend error: ${response.status}`);
+            throw new Error(`Backend error: ${response.status}`);
         }
     }
 

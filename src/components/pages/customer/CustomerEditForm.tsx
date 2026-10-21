@@ -161,9 +161,9 @@ function CustomerEditForm() {
                       className="form-check-input"
                       type="radio"
                       name="gender"
-                      value="male"
-                      checked={gender === "male"}
-                      onChange={() => setGender("male")}
+                      value="Male"
+                      checked={gender === "Male"}
+                      onChange={() => setGender("Male")}
                     />
                     <label className="form-check-label" htmlFor="genderMaleRadio">
                       Male
@@ -175,9 +175,9 @@ function CustomerEditForm() {
                       className="form-check-input"
                       type="radio"
                       name="gender"
-                      value="female"
-                      checked={gender === "female"}
-                      onChange={() => setGender("female")}
+                      value="Female"
+                      checked={gender === "Female"}
+                      onChange={() => setGender("Female")}
                     />
                     <label className="form-check-label" htmlFor="genderFemaleRadio">
                       Female
