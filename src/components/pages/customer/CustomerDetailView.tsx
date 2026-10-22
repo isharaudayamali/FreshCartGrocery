@@ -68,15 +68,15 @@ function CustomerDetailView() {
           <p className="text-muted small mb-0">
             <span className="mx-2">•</span>
             <span>
-              <strong>Created:</strong>{" "}
-              {dayjs(customer.created_at).format("YYYY MMMM DD, hh:mm A")} (
-              {dayjs(customer.created_at).fromNow()})
+              <span className="fw-bold text-secondary me-2">Created:</span>
+              {dayjs(customer.createdAt).format("YYYY MMMM DD, hh:mm A")} (
+              {dayjs(customer.createdAt).fromNow()})
             </span> <br></br>
             <span className="mx-2">•</span>
             <span>
-              <strong>Updated:</strong>{" "}
-              {dayjs(customer.updated_at).format("YYYY MMMM DD, hh:mm A")} (
-              {dayjs(customer.updated_at).fromNow()})
+              <span className="fw-bold text-secondary me-2">Updated:</span>
+              {dayjs(customer.updatedAt).format("YYYY MMMM DD, hh:mm A")} (
+              {dayjs(customer.updatedAt).fromNow()})
             </span>
           </p>
         )}
@@ -110,7 +110,7 @@ function CustomerDetailView() {
                 <td>{customer.nic || "-"}</td>
               </tr>
               <tr>
-                <th scope="row">DOB</th>
+                <th scope="row">Date of Birth</th>
                 <td>
                   {hasValidDateOfBirth && dateOfBirth
                     ? `${dateOfBirth.format("YYYY MMMM DD")} (${dayjs().diff(dateOfBirth, "year")} years old)`
