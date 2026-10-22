@@ -102,7 +102,7 @@ function CustomerForm() {
                 value={dob}
                 onChange={(e) => setDob(e.target.value)}
               />
-              <label htmlFor="dob">DOB:</label>
+              <label htmlFor="dob">Date of Birth:</label>
             </div>
           </div>
         </div>
