@@ -14,7 +14,7 @@ function CustomerEditForm() {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [NIC, setNIC] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
@@ -28,7 +28,7 @@ function CustomerEditForm() {
         setName(data.name ?? "");
         setMobile(data.mobile ?? "");
         setNIC(data.nic ?? "");
-        setDateOfBirth(data.dateOfBirth ?? data.dob ?? "");
+        setDob(data.dob ?? "");
         setGender(data.gender ?? "");
         setCity(data.city ?? "");
         setAddress(data.address ?? "");
@@ -53,7 +53,7 @@ function CustomerEditForm() {
       name,
       mobile,
       nic: NIC || undefined,
-      dob: dateOfBirth || undefined,
+      dob: dob || undefined,
       gender: gender || undefined,
       city: city || undefined,
       address: address || undefined,
@@ -79,7 +79,7 @@ function CustomerEditForm() {
     setName(customer?.name ?? "");
     setMobile(customer?.mobile ?? "");
     setNIC(customer?.nic ?? "");
-    setDateOfBirth(customer?.dateOfBirth ?? customer?.dob ?? "");
+    setDob(customer?.dob ?? "");
     setGender(customer?.gender ?? "");
     setCity(customer?.city ?? "");
     setAddress(customer?.address ?? "");
@@ -139,13 +139,13 @@ function CustomerEditForm() {
             <div className="col-md-6">
               <div className="mb-3 form-floating">
                 <input
-                  id="dateOfBirth"
+                  id="dob"
                   type="date"
                   className="form-control"
-                  value={dateOfBirth}
-                  onChange={(e) => setDateOfBirth(e.target.value)}
+                  value={dob}
+                  onChange={(e) => setDob(e.target.value)}
                 />
-                <label htmlFor="dateOfBirth">Date of Birth:</label>
+                <label htmlFor="dob">DOB:</label>
               </div>
             </div>
           </div>

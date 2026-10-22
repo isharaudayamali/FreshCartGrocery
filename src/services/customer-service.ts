@@ -75,8 +75,7 @@ export async function getCustomerDetail(id: number): Promise<CustomerDetailsMode
 }
 
 export async function updateCustomer(id: number, customer: CustomerInsertModel): Promise<CustomerDataModel> {
-    const response = await axiosClient.put<CustomerDataModel>(`${endpoint}/${id}`, {
-        body: JSON.stringify(customer),
+    const response = await axiosClient.put<CustomerDataModel>(`${endpoint}/${id}`, customer, {
         headers: {
             'Content-Type': 'application/json'
         }

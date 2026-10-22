@@ -4,6 +4,6 @@ export default interface CustomerSearchModel {
     NIC?: string;
     gender?: string;
     address?: string;
-    dateOfBirth?: string;
+    dob?: string;
     city?: string;
 }

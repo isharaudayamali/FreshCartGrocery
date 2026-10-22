@@ -19,6 +19,8 @@ function CustomerDetailView() {
   const invalidIdMessage = !id
     ? "Customer ID is missing."
     : !Number.isInteger(customerId);
+  const dateOfBirth = customer?.dob ? dayjs(customer.dob) : null;
+  const hasValidDateOfBirth = Boolean(dateOfBirth?.isValid());
 
   useEffect(() => {
     if (invalidIdMessage) {
@@ -108,10 +110,11 @@ function CustomerDetailView() {
                 <td>{customer.nic || "-"}</td>
               </tr>
               <tr>
-                <th scope="row">Date of Birth</th>
+                <th scope="row">DOB</th>
                 <td>
-                  {dayjs(customer.dateOfBirth).format("YYYY MMMM DD")} (
-                  {dayjs().diff(dayjs(customer.dateOfBirth), "year")} years old)
+                  {hasValidDateOfBirth && dateOfBirth
+                    ? `${dateOfBirth.format("YYYY MMMM DD")} (${dayjs().diff(dateOfBirth, "year")} years old)`
+                    : "-"}
                 </td>
               </tr>
               <tr>

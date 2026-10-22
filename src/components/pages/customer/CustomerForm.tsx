@@ -7,7 +7,7 @@ function CustomerForm() {
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [NIC, setNIC] = useState("");
-  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
   const [city, setCity] = useState("");
   const [address, setAddress] = useState("");
@@ -19,7 +19,7 @@ function CustomerForm() {
       name,
       mobile,
       nic: NIC || undefined,
-      dob: dateOfBirth || undefined,
+      dob: dob || undefined,
       gender: gender || undefined,
       city: city || undefined,
       address: address || undefined,
@@ -38,7 +38,7 @@ function CustomerForm() {
     setName("");
     setMobile("");
     setNIC("");
-    setDateOfBirth("");
+    setDob("");
     setGender("");
     setCity("");
     setAddress("");
@@ -96,13 +96,13 @@ function CustomerForm() {
           <div className="col-md-6">
             <div className="mb-3 form-floating">
               <input
-                id="dateOfBirth"
+                id="dob"
                 type="date"
                 className="form-control"
-                value={dateOfBirth}
-                onChange={(e) => setDateOfBirth(e.target.value)}
+                value={dob}
+                onChange={(e) => setDob(e.target.value)}
               />
-              <label htmlFor="dateOfBirth">Date of Birth:</label>
+              <label htmlFor="dob">DOB:</label>
             </div>
           </div>
         </div>
