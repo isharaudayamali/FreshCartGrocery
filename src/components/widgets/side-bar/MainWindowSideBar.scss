@@ -57,6 +57,20 @@
             margin-bottom: 8px;
         }
 
+        .sub-menu {
+            display: none;
+            padding-left: 16px;
+            margin-top: 8px;
+            overflow: hidden;
+            >.menu-item {
+                >a {
+                    padding: 6px 12px;
+                    font-size: 14px;
+                }
+
+            }
+        }
+
         .menu,
         .sub-menu {
             list-style: none;
@@ -66,6 +80,41 @@
             .menu-item {
                 margin-bottom: 8px;
                 color: #1f1f1f;
+
+                >a,p{
+                    color: #fff;
+                    font-weight: 500;
+                    text-decoration: none;
+                    display: flex;
+                    align-items: center;
+                    gap: 15px;
+                    padding: 8px 12px;
+                    font-size: 16px;
+                    cursor: pointer;
+                    border-radius: 4px;
+                    transition: background-color 0.3s ease;
+
+                    .chevron-icon {
+                        margin-left: auto;
+                        font-size: 16px;
+                        color: #090909;
+                        stroke-width: 0.5;
+                    }
+                    svg{
+                        margin-right: 8px;
+                        fill: #0f0f0f;
+                        color: #fff;
+                        font-size: 15px;
+                    }
+                    &:hover{
+                        background-color: rgba(255, 255, 255, 0.1);
+                    }
+                }
+                &.open > ,a,p{ 
+                    .chevron-icon {
+                        transform: rotate(90deg);
+                    }
+                }
 
                 .sidebar-link {
                     display: block;

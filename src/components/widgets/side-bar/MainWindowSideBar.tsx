@@ -1,4 +1,4 @@
-import { BsBox, BsCart3, BsDot, BsFillHouseDoorFill, BsGear, BsGraphUp, BsPerson,  BsPower, BsTruck } from "react-icons/bs";
+import { BsBox, BsCart3, BsChevronBarRight, BsDot, BsFillHouseDoorFill, BsGear, BsGraphUp, BsPerson,  BsPower, BsTruck } from "react-icons/bs";
 import "./MainWindowSideBar.scss";
 import { logout } from "../../../services/auth-service";
 import User from "../../../assets/images/user_dummy.jpg";
@@ -34,7 +34,7 @@ const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
             </a>
           </li>
           <li className="menu-item parent-menu">
-            <p> <BsCart3/> Sales</p>
+            <p> <BsCart3/> Sales <BsChevronBarRight className="chevron-icon" /></p>
             <ul className="sub-menu">
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
@@ -49,7 +49,7 @@ const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
             </ul>
           </li>
           <li className="menu-item parent-menu">
-           <p><BsBox/>Inventory</p>
+           <p><BsBox/>Inventory <BsChevronBarRight className="chevron-icon" /></p>
             <ul className="sub-menu">
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
@@ -69,7 +69,7 @@ const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
             </ul>
           </li>
           <li className="menu-item parent-menu">
-            <p><BsPerson/>Customers</p>
+            <p><BsPerson/>Customers <BsChevronBarRight className="chevron-icon" /></p>
             <ul className="sub-menu">
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
@@ -84,7 +84,7 @@ const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
             </ul>
           </li>
           <li className="menu-item parent-menu">
-            <p><BsTruck/>Suppliers</p>
+            <p><BsTruck/>Suppliers <BsChevronBarRight className="chevron-icon" /></p>
             <ul className="sub-menu">
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
@@ -99,7 +99,7 @@ const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
             </ul>
           </li>
           <li className="menu-item parent-menu">
-            <p><BsGraphUp/>Reports</p>
+            <p><BsGraphUp/>Reports <BsChevronBarRight className="chevron-icon" /></p>
             <ul className="sub-menu">
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
@@ -114,7 +114,7 @@ const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
             </ul>
           </li>
           <li className="menu-item parent-menu">
-            <p><BsGear/>Settings</p>
+            <p><BsGear/>Settings <BsChevronBarRight className="chevron-icon" /></p>
             <ul className="sub-menu">
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
