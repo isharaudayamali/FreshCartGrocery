@@ -21,7 +21,7 @@ export async function login(loginModel: UserLoginModel): Promise<LoginResponseMo
         errorMessage = errorData.message;
       }
     } catch {
-      // Response body එක හිස් නම් (Empty body) error එකක් නොවී මෙතැනින් ඉදිරියට යයි
+      //
     }
 
     throw new Error(errorMessage);
@@ -29,6 +29,11 @@ export async function login(loginModel: UserLoginModel): Promise<LoginResponseMo
 
   const data = await response.json();
   return data as LoginResponseModel;
+}
+
+export function logout() {
+  removeToken();
+  window.location.href = "/login";
 }
 
 export function setToken(token: string) {
