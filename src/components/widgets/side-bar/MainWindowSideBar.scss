@@ -29,13 +29,16 @@
         }
     }
 
-    @media screen and (min-width: 576px) {
-        .main-window-sidebar {
-            max-width: 350px;
-        }
-    }
+}
 
-    @media  screen and (min-width: 992px) {
+@media screen and (min-width: 576px) {
+    .main-window-sidebar {
+        max-width: 350px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .main-window-sidebar {
         transform: none;
         position: static;
         top: auto;
