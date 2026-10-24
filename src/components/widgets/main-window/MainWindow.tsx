@@ -8,12 +8,20 @@ import { useState } from "react";
 const MainWindow = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
+  function handleSidebarToggle() {
+    if (sidebarOpen) {
+      setSidebarOpen(false);
+    } else {
+      setSidebarOpen(true);
+    }
+  }
+
   return (
     <div>
         <MainWindowHeader onSidebarOpen={setSidebarOpen} isSidebarOpen={sidebarOpen} />
-        <main>
+        <main className="main-content">
             <MainWindowSideBar isSidebarOpen={sidebarOpen} />
-            <div className="main-window-content">
+            <div className="main-window-content" onClick={handleSidebarToggle}>
                 <Outlet />
             </div>
         </main>
