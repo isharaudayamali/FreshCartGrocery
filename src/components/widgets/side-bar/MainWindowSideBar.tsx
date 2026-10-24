@@ -1,4 +1,4 @@
-import { BsBox, BsCart3, BsChevronBarRight, BsDot, BsFillHouseDoorFill, BsGear, BsGraphUp, BsPerson,  BsPower, BsTruck } from "react-icons/bs";
+import { BsBox, BsCart3, BsChevronRight, BsDot, BsFillHouseDoorFill, BsGear, BsGraphUp, BsPerson,  BsPower, BsTruck } from "react-icons/bs";
 import "./MainWindowSideBar.scss";
 import { logout } from "../../../services/auth-service";
 import User from "../../../assets/images/user_dummy.jpg";
@@ -8,6 +8,18 @@ interface MainWindowSideBarParams {
 }
 
 const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
+
+
+function handleToggleExpandMenu(e: React.MouseEvent<HTMLParagraphElement, MouseEvent>) {
+    const parentMenu = e.currentTarget.parentElement;
+    if (parentMenu) {
+        const subMenu = parentMenu.querySelector(".sub-menu");
+        if (subMenu) {
+            subMenu.classList.toggle("open");
+        }
+    }
+}
+
   return (
     <aside className={`main-window-sidebar ${isSidebarOpen ? "open" : ""}`}>
       <div className="d-lg-none d-flex flex-column gap-24">
@@ -34,7 +46,7 @@ const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
             </a>
           </li>
           <li className="menu-item parent-menu">
-            <p> <BsCart3/> Sales <BsChevronBarRight className="chevron-icon" /></p>
+            <p onClick={handleToggleExpandMenu}> <BsCart3/> Sales <BsChevronRight className="chevron-icon" /></p>
             <ul className="sub-menu">
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
@@ -49,7 +61,7 @@ const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
             </ul>
           </li>
           <li className="menu-item parent-menu">
-           <p><BsBox/>Inventory <BsChevronBarRight className="chevron-icon" /></p>
+           <p onClick={handleToggleExpandMenu}><BsBox/>Inventory <BsChevronRight className="chevron-icon" /></p>
             <ul className="sub-menu">
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
@@ -69,7 +81,7 @@ const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
             </ul>
           </li>
           <li className="menu-item parent-menu">
-            <p><BsPerson/>Customers <BsChevronBarRight className="chevron-icon" /></p>
+            <p onClick={handleToggleExpandMenu}><BsPerson/>Customers <BsChevronRight className="chevron-icon" /></p>
             <ul className="sub-menu">
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
@@ -84,7 +96,7 @@ const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
             </ul>
           </li>
           <li className="menu-item parent-menu">
-            <p><BsTruck/>Suppliers <BsChevronBarRight className="chevron-icon" /></p>
+            <p onClick={handleToggleExpandMenu}><BsTruck/>Suppliers <BsChevronRight className="chevron-icon" /></p>
             <ul className="sub-menu">
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
@@ -99,7 +111,7 @@ const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
             </ul>
           </li>
           <li className="menu-item parent-menu">
-            <p><BsGraphUp/>Reports <BsChevronBarRight className="chevron-icon" /></p>
+            <p onClick={handleToggleExpandMenu}><BsGraphUp/>Reports <BsChevronRight className="chevron-icon" /></p>
             <ul className="sub-menu">
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
@@ -114,7 +126,7 @@ const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
             </ul>
           </li>
           <li className="menu-item parent-menu">
-            <p><BsGear/>Settings <BsChevronBarRight className="chevron-icon" /></p>
+            <p onClick={handleToggleExpandMenu}><BsGear/>Settings <BsChevronRight className="chevron-icon" /></p>
             <ul className="sub-menu">
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
