@@ -2,20 +2,18 @@
 
 .main-window-sidebar { 
     position: fixed;
-    background-color: $secondary-green;
+    background-color: $primary-green;
+    left: 0;
     width : 100%;
-    max-width: 350px;
     top: 80px;
     bottom: 40px;
     z-index: 11;
     overflow-y: auto;
     transform: translateX(-100%);
-    visibility: hidden; 
     transition: transform 0.3s ease-in-out, visibility 0.3s ease-in-out;
 
     &.open {
         transform: translateX(0);
-        visibility: visible;
 
         +div{
             &::before{
@@ -29,5 +27,19 @@
                 z-index: 10;
             }
         }
+    }
+
+    @media screen and (min-width: 576px) {
+        .main-window-sidebar {
+            max-width: 350px;
+        }
+    }
+
+    @media  screen and (min-width: 992px) {
+        transform: none;
+        position: static;
+        top: auto;
+        bottom: auto;
+        width: 250px;
     }
 }
