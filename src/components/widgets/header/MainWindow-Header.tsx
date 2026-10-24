@@ -9,13 +9,11 @@ interface MainWindowHeaderParams {
   isSidebarOpen: boolean;
 }
 
-const MainWindowHeader = ({ onSidebarOpen, isSidebarOpen }: MainWindowHeaderParams) =>{
+const MainWindowHeader = ({ onSidebarOpen, isSidebarOpen }: MainWindowHeaderParams) => {
   function handleLogout() {
     logout();
-  };
+  }
 
-
-const MainWindowHeader = ({ onSidebarOpen, isSidebarOpen }: MainWindowHeaderParams) => {
   return (
     <header className="main-window-header d-flex align-items-center">
      <button type="button" className="sidebar-toggle-button" onClick={() => onSidebarOpen(!isSidebarOpen)}>
