@@ -18,6 +18,7 @@
   &::-webkit-scrollbar {
     width: 6px;
   }
+
   &::-webkit-scrollbar-thumb {
     background-color: rgba(255, 255, 255, 0.3);
     border-radius: 10px;
@@ -26,195 +27,120 @@
   &.open {
     transform: translateX(0);
 
-    + div {
-      &::before {
-        content: "";
-        position: fixed;
-        top: 64px;
-        left: 0;
-        right: 0;
-        bottom: 40px;
-        background-color: rgba(0, 0, 0, 0.4);
-        z-index: 10;
-      }
+    + div::before {
+      content: "";
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      bottom: 40px;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 10;
     }
+  }
 
-    .sidebar-user-details {
-      img {
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
-        border-radius: 50%;
-        border: none;
-        border: 2px solid rgba(255, 255, 255, 0.5);
-      }
+  .sidebar-user-details {
+    img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.5);
     }
+  }
 
-    .sidebar-navigation {
+  .sidebar-navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sidebar-title {
+    color: #fff;
+  }
+
+  .menu,
+  .sub-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menu-item {
+    margin-bottom: 8px;
+
+    > a,
+    > p {
+      color: #fff;
+      font-weight: 500;
+      text-decoration: none;
       display: flex;
-      flex-direction: column;
-      gap: 16px;
+      align-items: center;
+      gap: 15px;
+      padding: 8px 12px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      margin: 0;
 
-      .sidebar-title {
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 12px;
-        font-weight: 600;
+      svg {
+        margin-right: 8px;
+        color: #fff;
+        font-size: 15px;
       }
 
-      .menu {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-
-        .menu-item {
-          margin-bottom: 4px;
-
-          .menu-link {
-            color: #ffffff;
-            font-weight: 500;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 10px 14px;
-            font-size: 15px;
-            cursor: pointer;
-            border-radius: 8px; /* Rounder edges */
-            transition:
-              background-color 0.2s ease,
-              transform 0.1s ease;
-            margin: 0;
-
-            svg {
-              font-size: 18px;
-            }
-
-            .chevron-icon {
-              margin-left: auto;
-              font-size: 14px;
-              transition: transform 0.3s ease;
-            }
-
-            &:hover {
-              background-color: rgba(255, 255, 255, 0.15);
-            }
-          }
-
-          &.open {
-            .menu-link {
-              background-color: rgba(255, 255, 255, 0.2);
-              .chevron-icon {
-                transform: rotate(90deg);
-              }
-            }
-
-            .sub-menu {
-              max-height: 250px; /* Smooth open animation */
-              opacity: 1;
-              padding-top: 4px;
-              padding-bottom: 8px;
-            }
-          }
-
-          .sub-menu {
-            list-style: none;
-            padding-left: 28px;
-            margin: 0;
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: all 0.3s ease-in-out;
-          }
-        }
+      .chevron-icon {
+        margin-left: auto;
+        color: #090909;
+        font-size: 16px;
+        stroke-width: 0.5;
+        transition: transform 0.3s ease;
       }
 
-      .sub-menu {
-        display: none;
-        padding-left: 16px;
-        margin-top: 8px;
-        overflow: hidden;
-        &.open {
-          display: block;
-        }
-        > .menu-item {
-          > a {
-            padding: 6px 12px;
-            font-size: 14px;
-          }
-        }
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    &.open {
+      > p {
+        background-color: rgba(255, 255, 255, 0.2);
       }
 
-      .menu,
-      .sub-menu {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+      > p .chevron-icon {
+        transform: rotate(90deg);
+      }
 
-        .menu-item {
-          margin-bottom: 8px;
-          color: #1f1f1f;
+      > .sub-menu {
+        max-height: 250px;
+        opacity: 1;
+        padding-top: 4px;
+        padding-bottom: 8px;
+      }
+    }
+  }
 
-          > a,
-          p {
-            color: #fff;
-            font-weight: 500;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 8px 12px;
-            font-size: 16px;
-            cursor: pointer;
-            border-radius: 4px;
-            transition: background-color 0.3s ease;
+  .sub-menu {
+    padding-left: 28px;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
 
-            .chevron-icon {
-              margin-left: auto;
-              font-size: 16px;
-              color: #090909;
-              stroke-width: 0.5;
-              transition: transform 0.3s ease;
-            }
-            svg {
-              margin-right: 8px;
-              fill: #0f0f0f;
-              color: #fff;
-              font-size: 15px;
-            }
-            &:hover {
-              background-color: rgba(255, 255, 255, 0.1);
-            }
-          }
-          &.open > a,
-          p {
-            .chevron-icon {
-              transform: rotate(90deg);
-            }
-          }
+    .menu-item {
+      margin-bottom: 4px;
+    }
 
-          .sidebar-link {
-            display: block;
-            padding: 8px 12px;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 4px;
+    .sidebar-link {
+      display: block;
+      padding: 6px 12px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
 
-            &:hover {
-              background-color: rgba(255, 255, 255, 0.1);
-            }
-          }
-        }
-
-        .parent-menu-item {
-          > p {
-            font-weight: bold;
-            cursor: pointer;
-            margin: 0;
-          }
-        }
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
       }
     }
   }

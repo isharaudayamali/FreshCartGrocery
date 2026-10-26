@@ -2,22 +2,20 @@ import { BsBox, BsCart3, BsChevronRight, BsDot, BsFillHouseDoorFill, BsGear, BsG
 import "./MainWindowSideBar.scss";
 import { logout } from "../../../services/auth-service";
 import User from "../../../assets/images/user_dummy.jpg";
+import { useState } from "react";
 
 interface MainWindowSideBarParams {
   isSidebarOpen: boolean;
 }
 
 const MainWindowSideBar = ({ isSidebarOpen }: MainWindowSideBarParams) => {
+const [expandedMenus, setExpandedMenus] = useState<Record<string, boolean>>({});
 
-
-function handleToggleExpandMenu(e: React.MouseEvent<HTMLParagraphElement, MouseEvent>) {
-    const parentMenu = e.currentTarget.parentElement;
-    if (parentMenu) {
-        const subMenu = parentMenu.querySelector(".sub-menu");
-        if (subMenu) {
-            subMenu.classList.toggle("open");
-        }
-    }
+function handleToggleExpandMenu(menuName: string) {
+  setExpandedMenus((currentMenus) => ({
+    ...currentMenus,
+    [menuName]: !currentMenus[menuName],
+  }));
 }
 
   return (
@@ -45,9 +43,9 @@ function handleToggleExpandMenu(e: React.MouseEvent<HTMLParagraphElement, MouseE
               <span>Dashboard</span>
             </a>
           </li>
-          <li className="menu-item parent-menu">
-            <p onClick={handleToggleExpandMenu}> <BsCart3/> Sales <BsChevronRight className="chevron-icon" /></p>
-            <ul className="sub-menu">
+          <li className={`menu-item parent-menu ${expandedMenus.sales ? "open" : ""}`}>
+            <p onClick={() => handleToggleExpandMenu("sales")}> <BsCart3/> Sales <BsChevronRight className="chevron-icon" /></p>
+            <ul className={`sub-menu ${expandedMenus.sales ? "open" : ""}`}>
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
                   <span> <BsDot/>Orders</span>
@@ -60,9 +58,9 @@ function handleToggleExpandMenu(e: React.MouseEvent<HTMLParagraphElement, MouseE
               </li>
             </ul>
           </li>
-          <li className="menu-item parent-menu">
-           <p onClick={handleToggleExpandMenu}><BsBox/>Inventory <BsChevronRight className="chevron-icon" /></p>
-            <ul className="sub-menu">
+          <li className={`menu-item parent-menu ${expandedMenus.inventory ? "open" : ""}`}>
+           <p onClick={() => handleToggleExpandMenu("inventory")}><BsBox/>Inventory <BsChevronRight className="chevron-icon" /></p>
+            <ul className={`sub-menu ${expandedMenus.inventory ? "open" : ""}`}>
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
                   <span> <BsDot/> Products</span>
@@ -80,9 +78,9 @@ function handleToggleExpandMenu(e: React.MouseEvent<HTMLParagraphElement, MouseE
               </li>
             </ul>
           </li>
-          <li className="menu-item parent-menu">
-            <p onClick={handleToggleExpandMenu}><BsPerson/>Customers <BsChevronRight className="chevron-icon" /></p>
-            <ul className="sub-menu">
+          <li className={`menu-item parent-menu ${expandedMenus.customers ? "open" : ""}`}>
+            <p onClick={() => handleToggleExpandMenu("customers")}><BsPerson/>Customers <BsChevronRight className="chevron-icon" /></p>
+            <ul className={`sub-menu ${expandedMenus.customers ? "open" : ""}`}>
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
                   <span> <BsDot/> Customer List</span>
@@ -95,9 +93,9 @@ function handleToggleExpandMenu(e: React.MouseEvent<HTMLParagraphElement, MouseE
               </li>
             </ul>
           </li>
-          <li className="menu-item parent-menu">
-            <p onClick={handleToggleExpandMenu}><BsTruck/>Suppliers <BsChevronRight className="chevron-icon" /></p>
-            <ul className="sub-menu">
+          <li className={`menu-item parent-menu ${expandedMenus.suppliers ? "open" : ""}`}>
+            <p onClick={() => handleToggleExpandMenu("suppliers")}><BsTruck/>Suppliers <BsChevronRight className="chevron-icon" /></p>
+            <ul className={`sub-menu ${expandedMenus.suppliers ? "open" : ""}`}>
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
                   <span> <BsDot/> Supplier List</span>
@@ -110,9 +108,9 @@ function handleToggleExpandMenu(e: React.MouseEvent<HTMLParagraphElement, MouseE
               </li>
             </ul>
           </li>
-          <li className="menu-item parent-menu">
-            <p onClick={handleToggleExpandMenu}><BsGraphUp/>Reports <BsChevronRight className="chevron-icon" /></p>
-            <ul className="sub-menu">
+          <li className={`menu-item parent-menu ${expandedMenus.reports ? "open" : ""}`}>
+            <p onClick={() => handleToggleExpandMenu("reports")}><BsGraphUp/>Reports <BsChevronRight className="chevron-icon" /></p>
+            <ul className={`sub-menu ${expandedMenus.reports ? "open" : ""}`}>
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
                   <span> <BsDot/> Sales Report</span>
@@ -125,9 +123,9 @@ function handleToggleExpandMenu(e: React.MouseEvent<HTMLParagraphElement, MouseE
               </li>
             </ul>
           </li>
-          <li className="menu-item parent-menu">
-            <p onClick={handleToggleExpandMenu}><BsGear/>Settings <BsChevronRight className="chevron-icon" /></p>
-            <ul className="sub-menu">
+          <li className={`menu-item parent-menu ${expandedMenus.settings ? "open" : ""}`}>
+            <p onClick={() => handleToggleExpandMenu("settings")}><BsGear/>Settings <BsChevronRight className="chevron-icon" /></p>
+            <ul className={`sub-menu ${expandedMenus.settings ? "open" : ""}`}>
               <li className="menu-item">
                 <a href="#" className="sidebar-link">
                   <span> <BsDot/> Users</span>
